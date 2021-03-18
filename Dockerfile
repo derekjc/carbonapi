@@ -45,6 +45,7 @@ RUN \
     tzdata \
     libc6-compat \
     ca-certificates \
+    su-exec \
   && /usr/sbin/useradd \
     --system \
     -U \
@@ -65,4 +66,4 @@ ENV HOME /root
 
 EXPOSE 8081
 
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

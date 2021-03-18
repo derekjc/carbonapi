@@ -67,25 +67,9 @@ upstreams:
         find: "2s"
         render: "10s"
         connect: "200ms"
-    #backends section will override this one!
-    backendsv2:
-        backends:
-          -
-            groupName: "go-carbon-group1"
-            protocol: "carbonapi_v3_pb"
-            lbMethod: "broadcast"
-            maxTries: 3
-            maxBatchSize: 100
-            keepAliveInterval: "10s"
-            concurrencyLimit: 0
-            maxIdleConnsPerHost: 1000
-            timeouts:
-                find: "2s"
-                render: "50s"
-                connect: "200ms"
-            servers:
-                - "http://prod-devops-go-carbon1.local:8080"
-                - "http://prod-devops-go-carbon2.local:8080"
+    backends:
+      - "http://127.0.0.1:8080"
+
 logger:
     - logger: ""
       file: "stderr"
