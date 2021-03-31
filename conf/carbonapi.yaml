@@ -25,7 +25,7 @@ headersToLog:
 #     template: "perSecond({{.argString}})|scale(60)"
 # Control what status code will be returned where /render or find query do not return any metric
 # Max concurrent requests to CarbonZipper
-concurency: 2000
+concurency: 4000
 cache:
    # Type of caching. Valid: "mem", "memcache", "null"
    type: "mem"
