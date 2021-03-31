@@ -25,23 +25,27 @@ headersToLog:
 #     template: "perSecond({{.argString}})|scale(60)"
 # Control what status code will be returned where /render or find query do not return any metric
 # Max concurrent requests to CarbonZipper
-concurency: 1000
+concurency: 2000
 cache:
    # Type of caching. Valid: "mem", "memcache", "null"
    type: "mem"
    # Cache limit in megabytes
-   size_mb: 2048
+   size_mb: 1024
    # Default cache timeout value. Identical to DEFAULT_CACHE_DURATION in graphite-web.
    defaultTimeoutSec: 60
    # Only used by memcache type of cache. List of memcache servers.
 # Amount of CPUs to use. 0 - unlimited
 cpus: 0
+backendCache:
+   type: "mem"
+   size_mb: 1024
+   defaultTimeoutSec: 60
 # Timezone, default - local
 tz: ""
 
 #functionsConfig:
 #    graphiteWeb: ./graphiteWeb.example.yaml
-maxBatchSize: 100
+maxBatchSize: 200
 graphite:
     # Host:port where to send internal metrics
     # Empty = disabled
@@ -62,10 +66,10 @@ upstreams:
 
     concurrencyLimitPerServer: 0
     keepAliveInterval: "30s"
-    maxIdleConnsPerHost: 100
+    maxIdleConnsPerHost: 1000
     timeouts:
         find: "2s"
-        render: "10s"
+        render: "50s"
         connect: "200ms"
     backends:
       - "http://127.0.0.1:8080"
